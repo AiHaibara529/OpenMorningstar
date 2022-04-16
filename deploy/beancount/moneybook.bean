@@ -1,0 +1,376 @@
+; 教程: https://sspai.com/post/59777
+;【一、账本信息】
+option "title" "我的账本" ;账本名称
+option "operating_currency" "CNY" ;账本主货币
+
+;【二、账户创建】
+2022-02-27 open Equity:OpenBalance ;用于账户初始化，支持任意货币
+
+; =======资产=======
+2022-02-27 open Assets:Card:0060 CNY  ; 尾号0060的银行卡，支持CNY
+2022-02-27 open Assets:Card:3984 CNY  ; 尾号3984的银行卡，支持CNY
+2022-02-27 open Assets:Alipay:YuEBao CNY; 余额宝
+2022-02-27 open Assets:Alipay:Wallet CNY ; 支付宝余额
+2022-02-27 open Assets:Wechat:Wallet CNY ; 微信余额
+2022-02-27 open Assets:Wechat:YuEBao CNY ; 微信零钱通
+2022-02-27 open Assets:Balance:Apple USD; 苹果美区余额
+2022-02-27 open Assets:Balance:Google HKD; 谷歌礼品卡
+
+; =======收入=======
+2022-02-27 open Income:Wage CNY ; 零工
+2022-02-27 open Income:Salary CNY ;工资
+2022-02-27 open Income:Alimony CNY ; 生活费
+2022-02-27 open Income:BrownEnvelope CNY ; 红包
+2022-02-27 open Income:Reward CNY, USD ; 打赏
+
+; =======借款=======
+2022-02-27 open Liabilities:Colleague CNY ; 同事
+2022-02-27 open Liabilities:Friend CNY ; 朋友
+
+; =======支出=======
+2022-02-27 open Expenses:Tax CNY ; 交税
+; 衣物
+2022-02-27 open Expenses:Clothes:Shoes CNY; 鞋子
+2022-02-27 open Expenses:Clothes:Pants CNY; 裤子
+2022-02-27 open Expenses:Clothes:Coat CNY; 上衣
+2022-02-27 open Expenses:Clothes:Hat CNY; 帽子
+2022-02-27 open Expenses:Clothes:Accessories CNY; 饰品
+2022-02-27 open Expenses:Clothes:Mask CNY; 口罩
+; 饮食
+2022-02-27 open Expenses:Food:Snack CNY; 零食
+2022-02-27 open Expenses:Food:Fruit CNY; 水果
+2022-02-27 open Expenses:Food:Breakfast CNY ;早饭
+2022-02-27 open Expenses:Food:Lunch CNY ;午饭
+2022-02-27 open Expenses:Food:Supper CNY ;晚饭
+; 住宿
+2022-02-27 open Expenses:Accommodation:Cleaning CNY ; 保洁 
+2022-02-27 open Expenses:Accommodation:Rent CNY; 房租
+2022-02-27 open Expenses:Accommodation:Network CNY ;网络, 话费
+2022-02-27 open Expenses:Accommodation:Utility CNY;水电费
+; 交通
+2022-02-27 open Expenses:Traffic:Plane CNY ; 飞机
+2022-02-27 open Expenses:Traffic:Taxi CNY ; 打车
+2022-02-27 open Expenses:Traffic:Bus CNY ; 公交
+2022-02-27 open Expenses:Traffic:Bicycle CNY ; 单车
+2022-02-27 open Expenses:Traffic:Subway CNY ; 地铁
+; 日用
+2022-02-27 open Expenses:Necessary:Haircut CNY ; 理发
+2022-02-27 open Expenses:Necessary:Medicine CNY ; 医药
+2022-02-27 open Expenses:Necessary:Shower CNY ; 洗浴
+2022-02-27 open Expenses:Necessary:Shampoo CNY ; 洗发水
+2022-02-27 open Expenses:Necessary:Tissue CNY ; 纸巾
+2022-02-27 open Expenses:Necessary:Network CNY ; 网费
+; 娱乐
+2022-02-27 open Expenses:Recreation:Movie CNY, USD, HKD ; 电影
+; 学习
+2022-02-27 open Expenses:Study:Course CNY ; 课程
+2022-02-27 open Expenses:Study:Stationery CNY ; 文具
+2022-02-27 open Expenses:Study:Book CNY, USD ; 书籍
+2022-02-27 open Expenses:Study:Exam CNY ; 考试报名
+2022-02-27 open Expenses:Study:Outsourcing CNY ; 外包项目
+; 红包
+2022-02-27 open Expenses:BrownEnvelope:Colleague CNY ; 同事
+2022-02-27 open Expenses:BrownEnvelope:TechSupport CNY ; 技术支持
+2022-02-27 open Expenses:BrownEnvelope:Relatives CNY ; 亲人
+2022-02-27 open Expenses:BrownEnvelope:Friend CNY ; 朋友
+; 礼物
+2022-02-27 open Expenses:Gift:GirlFriend CNY ; 礼物
+; 数码
+2022-02-27 open Expenses:Digital:Hardware CNY ; 硬件
+2022-02-27 open Expenses:Digital:Software CNY, HKD, USD ; 软件
+2022-02-27 open Expenses:Digital:Cloud:Gcloud USD ; 谷歌云
+2022-02-27 open Expenses:Digital:Cloud:Tencent CNY ; 腾讯云
+2022-02-27 open Expenses:Digital:Cloud:Matpool CNY ; 矩池云
+; 待分类
+
+
+;【三、账户初始化】
+2022-02-27 * "" "0060银行卡，初始余额: 46.18 CNY"
+    Assets:Card:0060                46.18 CNY
+    Equity:OpenBalance             -46.18 CNY
+2022-02-27 * "" "3984银行卡，初始余额: 0.66 CNY"
+    Assets:Card:3984                0.66 CNY
+    Equity:OpenBalance             -0.66 CNY
+2022-02-27 * "" "阿里余额宝，初始余额: 0 CNY"
+    Assets:Alipay:YuEBao              0.00 CNY
+    Equity:OpenBalance               -0.00 CNY
+2022-02-27 * "" "支付宝余额，初始余额: 0 CNY"
+    Assets:Alipay:Wallet              0.00 CNY
+    Equity:OpenBalance               -0.00 CNY
+2022-02-27 * "" "微信余额，初始余额: 2340.65 CNY"
+    Assets:Wechat:Wallet           2340.65 CNY
+    Equity:OpenBalance            -2340.65 CNY
+2022-02-27 * "" "微信零钱通，初始余额: 0 CNY"
+    Assets:Wechat:YuEBao            0.00 CNY
+    Equity:OpenBalance             -0.00 CNY
+2022-02-27 * "" "苹果美区余额，初始余额: 4.16 USD"
+    Assets:Balance:Apple              4.16 USD
+    Equity:OpenBalance               -4.16 USD
+2022-02-27 * "" "谷歌港区余额，初始余额: 10.99 HKD"
+    Assets:Balance:Google            10.99 HKD
+    Equity:OpenBalance              -10.99 HKD
+
+;【四、交易记录】
+2022-02-28 * "零食店" "鸡腿"
+  Assets:Wechat:Wallet           -5.00 CNY
+  Expenses:Food:Snack             5.00 CNY
+
+2022-03-01 * "药店" "口罩"
+  Assets:Wechat:Wallet           -8.00 CNY
+  Expenses:Clothes:Mask           8.00 CNY
+
+2022-03-01 * "爱丽丝面包工坊" "汉堡+热狗"
+  Assets:Wechat:Wallet            -17.00 CNY
+  Expenses:Food:Snack              17.00 CNY
+
+2022-03-02 * "巴蒂鸡排" "鸡排"
+  Assets:Wechat:Wallet            -12.00 CNY
+  Expenses:Food:Snack              12.00 CNY
+
+2022-03-02 * "华莱士" "嫩牛五方套餐"
+  Assets:Wechat:Wallet            -19.00 CNY
+  Expenses:Food:Snack              19.00 CNY
+
+2022-03-03 * "小唐" "奶茶费"
+  Assets:Wechat:Wallet            -23.33 CNY
+  Expenses:BrownEnvelope:Friend    23.33 CNY
+
+2022-03-04 * "零食店" "辣条"
+  Assets:Wechat:Wallet           -4.00 CNY
+  Expenses:Food:Snack             4.00 CNY
+
+2022-03-04 * "手机修理" "手机膜+手机壳"
+  Assets:Wechat:Wallet            -35.00 CNY
+  Expenses:Digital:Hardware        35.00 CNY
+
+2022-03-05 * "华莱士" "单人套餐"
+  Assets:Wechat:Wallet            -26.00 CNY
+  Expenses:Food:Snack              26.00 CNY
+
+2022-03-05 * "小明" "奶茶费"
+  Assets:Wechat:Wallet            -23.33 CNY
+  Expenses:BrownEnvelope:Friend    23.33 CNY
+
+2022-03-06 * "小明" "奶茶费"
+  Assets:Wechat:Wallet            -63.00 CNY
+  Expenses:BrownEnvelope:Friend    63.00 CNY
+
+2022-03-08 * "腾讯云" "短信1000条"
+  Assets:Wechat:Wallet            -50.00 CNY
+  Expenses:Digital:Cloud:Tencent   50.00 CNY
+
+2022-03-08 * "幸福浴室" "洗澡"
+  Assets:Wechat:Wallet           -10.00 CNY
+  Expenses:Necessary:Shower       10.00 CNY
+
+2022-03-08 * "零食店" "蚕豆"
+  Assets:Wechat:Wallet            -8.00 CNY
+  Expenses:Food:Snack              8.00 CNY
+
+2022-03-10 * "小明" "奶茶费"
+  Assets:Wechat:Wallet            -23.33 CNY
+  Expenses:BrownEnvelope:Friend    23.33 CNY
+
+2022-03-11 * "田社长" "10min"
+  Assets:Wechat:Wallet            -20.00 CNY
+  Expenses:BrownEnvelope:Friend    20.00 CNY
+
+2022-03-12 * "巴弟鸡排" "鸡排"
+  Assets:Wechat:Wallet           -12.00 CNY
+  Expenses:Food:Snack             12.00 CNY
+
+2022-03-12 * "纪念品店" "帽子"
+  Assets:Wechat:Wallet           -35.00 CNY
+  Expenses:Clothes:Hat            35.00 CNY
+
+2022-03-12 * "BSIJA" "外套"
+  Assets:Wechat:Wallet          -419.00 CNY
+  Expenses:Clothes:Hat           419.00 CNY
+
+2022-03-13 * "小明" "红包"
+  Assets:Wechat:Wallet            -4.66 CNY
+  Expenses:BrownEnvelope:Friend    4.66 CNY
+
+2022-03-14 * "爱丽丝面包工坊" "两块面包"
+  Assets:Wechat:Wallet            -20.00 CNY
+  Expenses:Food:Snack              20.00 CNY
+
+2022-03-16 * "小卖部" "面条"
+  Assets:Wechat:Wallet             -5.00 CNY
+  Expenses:Food:Supper              5.00 CNY
+
+2022-03-18 * "佳美洗化" "洗发水"
+  Assets:Wechat:Wallet            -33.80 CNY
+  Expenses:Necessary:Shampoo       33.80 CNY
+
+2022-03-18 * "零食店" "辣条"
+  Assets:Wechat:Wallet            -5.00 CNY
+  Expenses:Food:Snack              5.00 CNY
+
+2022-03-19 * "App Store" "icloud"
+  Assets:Wechat:Wallet            -6.00 CNY
+  Expenses:Digital:Software        6.00 CNY
+
+2022-03-20 * "App Store" "ishot Pro"
+  Assets:Wechat:Wallet           -78.00 CNY
+  Expenses:Digital:Software       78.00 CNY
+
+2022-03-20 * "王广振" "眼镜"
+  Assets:Wechat:Wallet            150.00 CNY
+  Income:BrownEnvelope            150.00 CNY
+  Equity:OpenBalance             -300.00 CNY
+
+2022-03-20 * "夏洛特" "三个汉堡一个鸡腿"
+  Assets:Wechat:Wallet           -24.00 CNY
+  Expenses:Food:Snack             24.00 CNY
+
+2022-03-20 * "小明" "红包"
+  Assets:Wechat:Wallet            -23.33 CNY
+  Expenses:BrownEnvelope:Friend    23.33 CNY
+
+2022-03-21 * "阿紫" "10min"
+  Assets:Wechat:Wallet            -62.00 CNY
+  Expenses:BrownEnvelope:Friend    62.00 CNY
+
+2022-03-22 * "河海" "研究生考试报名"
+  Assets:Wechat:Wallet            -80.00 CNY
+  Expenses:Study:Exam              80.00 CNY
+
+2022-03-22 * "淘宝商家" "lastpass一年"
+  Assets:Wechat:Wallet            -128.00 CNY
+  Expenses:Digital:Software        128.00 CNY
+
+2022-03-23 * "淘宝商家" "office"
+  Assets:Wechat:Wallet            -65.00 CNY
+  Expenses:Digital:Software        65.00 CNY
+
+2022-03-23 * "华仔" "理发"
+  Assets:Wechat:Wallet            -25.00 CNY
+  Expenses:Necessary:Haircut       25.00 CNY
+
+2022-03-23 * "佳美洗化" "面纸"
+  Assets:Wechat:Wallet            -17.80 CNY
+  Expenses:Necessary:Tissue        17.80 CNY
+
+2022-03-25 * "麦当劳" "桶装鸡块鸡腿"
+  Assets:Wechat:Wallet            -39.90 CNY
+  Expenses:Food:Snack              39.90 CNY
+
+2022-03-25 * "Apple Music" "更新订阅"
+  Assets:Wechat:Wallet             -10.00 CNY
+  Expenses:Digital:Software         10.00 CNY
+
+2022-03-28 * "默涵姐姐" "贺喜红包"
+  Income:BrownEnvelope              88.00 CNY
+  Assets:Wechat:Wallet              88.00 CNY
+  Equity:OpenBalance              -176.00 CNY
+
+2022-03-28 * "三姨" "贺喜红包"
+  Income:BrownEnvelope             666.00 CNY
+  Assets:Wechat:Wallet             666.00 CNY
+  Equity:OpenBalance             -1332.00 CNY
+
+2022-03-29 * "优越数码" "有线耳机"
+  Assets:Wechat:Wallet              -60.00 CNY
+  Expenses:Digital:Hardware          60.00 CNY
+
+2022-04-01 * "美孚批发部" "阿萨姆奶茶"
+  Assets:Wechat:Wallet               -4.00 CNY
+  Expenses:Food:Snack                 4.00 CNY
+
+2022-04-03 * "重庆鲜面店" "水面"
+  Assets:Wechat:Wallet               -5.00 CNY
+  Expenses:Food:Supper                5.00 CNY
+
+2022-04-03 * "美孚批发部" "阿萨姆奶茶"
+  Assets:Wechat:Wallet               -4.00 CNY
+  Expenses:Food:Snack                 4.00 CNY
+
+2022-04-04 * "美孚批发部" "阿萨姆奶茶"
+  Assets:Wechat:Wallet               -4.00 CNY
+  Expenses:Food:Snack                 4.00 CNY
+
+2022-04-04 * "零食店" "辣条+面纸"
+  Assets:Wechat:Wallet               -5.00 CNY
+  Expenses:Food:Snack                 5.00 CNY
+
+2022-04-04 * "颜露" "奶茶费"
+  Assets:Card:0060                -20.00 CNY
+  Expenses:BrownEnvelope:Friend    20.00 CNY
+
+2022-04-05 * "范巧玲" "日历"
+  Assets:Card:0060                -13.49 CNY
+  Expenses:Gift:GirlFriend         13.49 CNY
+
+2022-04-05 * "手机店" "手机壳"
+  Assets:Wechat:Wallet            -25.00 CNY
+  Expenses:Digital:Hardware        25.00 CNY
+
+2022-04-06 * "京东" "《大话通信》"
+  Assets:Wechat:Wallet            -64.29 CNY
+  Expenses:Study:Book              64.29 CNY
+
+2022-04-06 * "京东" "《无线通信(第二版)》"
+  Assets:Wechat:Wallet           -104.30 CNY
+  Expenses:Study:Book             104.30 CNY
+
+2022-04-06 * "小卖部" "电池"
+  Assets:Wechat:Wallet             -5.00 CNY
+  Expenses:Digital:Hardware         5.00 CNY
+
+2022-04-08 * "零食店" "卫龙"
+  Assets:Wechat:Wallet             -5.00 CNY
+  Expenses:Food:Snack               5.00 CNY
+
+2022-04-09 * "水果先生" "丑橘"
+  Assets:Wechat:Wallet            -25.00 CNY
+  Expenses:Food:Fruit              25.00 CNY
+
+2022-04-09 * "零食店" "鸡腿+面纸"
+  Assets:Wechat:Wallet             -5.00 CNY
+  Expenses:Food:Snack               5.00 CNY
+
+2022-04-09 * "小卖部" "饮料"
+  Assets:Wechat:Wallet             -4.00 CNY
+  Expenses:Food:Snack               4.00 CNY
+
+2022-04-12 * "小卖部" "饮料"
+  Assets:Wechat:Wallet             -4.00 CNY
+  Expenses:Food:Snack               4.00 CNY
+
+2022-04-12 * "桃酥店" "面包"
+  Assets:Wechat:Wallet            -12.10 CNY
+  Expenses:Food:Snack              12.10 CNY
+
+2022-04-14 * "零食店" "辣条+面纸"
+  Assets:Wechat:Wallet             -5.00 CNY
+  Expenses:Food:Snack               5.00 CNY
+
+2022-04-14 * "小卖部" "饮料"
+  Assets:Wechat:Wallet             -4.00 CNY
+  Expenses:Food:Snack               4.00 CNY
+
+2022-04-15 * "中国移动" "话费"
+  Assets:Wechat:Wallet             -100.00 CNY
+  Expenses:Necessary:Network        100.00 CNY
+
+2022-04-15 * "范巧玲" "腾讯红包"
+  Assets:Wechat:Wallet               1.00 CNY
+  Income:BrownEnvelope               1.00 CNY
+  Equity:OpenBalance                -2.00 CNY
+
+2022-04-15 * "夏洛特" "鸡腿"
+  Assets:Wechat:Wallet           -6.00 CNY
+  Expenses:Food:Snack             6.00 CNY
+
+2022-04-15 * "陆老大" "鸡腿"
+  Assets:Wechat:Wallet           -5.00 CNY
+  Expenses:Food:Snack             5.00 CNY
+
+2022-04-15 * "鸡排店" "烤肠"
+  Assets:Wechat:Wallet           -5.00 CNY
+  Expenses:Food:Snack             5.00 CNY
+
+2022-04-15 * "小唐" "红包"
+  Assets:Wechat:Wallet           -40.00 CNY
+  Expenses:BrownEnvelope:Friend   40.00 CNY

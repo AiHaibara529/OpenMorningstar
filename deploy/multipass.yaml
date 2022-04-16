@@ -1,0 +1,24 @@
+# NOTE: 创建镜像:
+# multipass launch --name master --cpus 2 --mem 2G --disk 10G --cloud-init multipass.yaml
+
+password: 1234asdw
+chpasswd: { expire: False }
+ssh_pauth: True
+
+apt:
+  primary:
+    - arches: [default]
+      uri: https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+
+apt_upgrade: true
+
+packages:
+  - python3-pip
+  - virtualenv
+
+runcmd:
+  # 换源
+  - mkdir /home/ubuntu/.pip/
+  - wget https://cdn.jsdelivr.net/gh/HenryJi529/OpenMorningstar@main/deploy/_mirror_cn/pip.conf -O /home/ubuntu/.pip/pip.conf
+  # Python开发环境
+  - [/usr/bin/virtualenv, /home/ubuntu/env/]

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<!-- 预留页面标题位置 -->
+	<title>{% block title %}{% endblock title %}</title>
+	<link rel="icon" href="{% static 'album/img/favicon.png' %}">
+	<!-- bootstrap.css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"
+		async></script>
+	<link rel="stylesheet" href="{% static 'album/css/hover.css' %}">
+	<link rel="stylesheet" href="{% static 'album/css/style.css' %}">
+</head>
+
+<body>
+	{% include 'album/header.html' %}
+
+	{% block content %}{% endblock content %}
+
+	{% include 'album/footer.html' %}
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+
+{% block scripts %}{% endblock scripts %}
+
+</html>

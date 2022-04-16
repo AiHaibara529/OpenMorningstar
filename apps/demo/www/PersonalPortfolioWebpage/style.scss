@@ -1,0 +1,126 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+	box-sizing: border-box;
+	a {
+		text-decoration: none;
+	}
+}
+
+
+#navbar {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	justify-content: end;
+	background-color: #BD3144;
+	ul li {
+		display: inline-block;
+		width: 150px;
+		height: 80px;
+		text-align: center;
+		line-height: 80px;
+		a {
+			font-size: 2rem;
+			color: beige;
+		}
+	}
+}
+
+
+#welcome-section {
+	height: 100vh;
+	background: linear-gradient(45deg,#373B3F,#19191B);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	h1 {
+		color: white;
+		width: 500px;
+		text-align: center;
+		font-size: 4rem;
+	}
+	p {
+		color: red;
+		width: 500px;
+		text-align: center;
+		font-size: 2rem;
+	}
+}
+
+#projects {
+	background-color: #41587E;
+	padding-bottom: 10vh;
+	.projects-section-header {
+		font-size: 3rem;
+		text-align: center;
+		padding-top: 15vh;
+		padding-bottom: 5vh;
+		text-decoration: underline;
+		color: aliceblue;
+	}
+	.projects-grid {
+		display: grid;
+		padding: 0 8vw;
+		grid-template-columns: repeat(3,400px);
+		justify-content: space-around;
+		a {
+			padding-bottom: 3rem;
+			img {
+				width: 100%;
+			}
+			.project-title {
+				background-color: #373B3F;
+				font-size: 1.5rem;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: wheat;
+			}
+		}
+	}
+	.btn-show-all {
+		width: 200px;
+		display: block;
+		color: wheat;
+		font-size: 2rem;
+		text-align: center;
+		margin: 0 auto;
+		border-radius: 10%;
+		background-color: #373B3F;
+		border: #373B3F 1px solid;
+	}
+}
+
+.hero {
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+color: black;
+}
+
+h1 {
+text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+font-size: 100px;
+}
+
+@media screen and (max-width: 1300px) {
+	#projects .projects-grid{
+		grid-template-columns: repeat(2,400px);
+	}
+}
+
+@media screen and (max-width: 800px) {
+	#projects .projects-grid{
+		grid-template-columns: repeat(2,300px);
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#projects .projects-grid{
+		grid-template-columns: repeat(1,400px);
+	}
+}

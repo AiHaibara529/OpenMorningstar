@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+	<title>个人作品集</title>
+</head>
+
+<body>
+
+	<nav id="navbar" class="nav">
+		<ul class="nav-list">
+			<li>
+				<a href="#welcome-section">About</a>
+			</li>
+			<li>
+				<a href="#projects">Work</a>
+			</li>
+			<li>
+				<a href="https://github.com/HenryJi529" target="_blank">Github</a>
+			</li>
+		</ul>
+	</nav>
+
+	<section id="welcome-section" class="welcome-section hero">
+		<h1>Hey I am Henry</h1>
+	</section>
+
+	<section id="projects" class="projects-section">
+		<h2 class="projects-section-header">These are some of my projects</h2>
+
+		<div class="projects-grid">
+			<a href="https://stoic-minsky-c3c8ff.netlify.app/" target="_blank" class="project project-tile">
+				<img class="project-image" src="img/OnlineCanvas.png" alt="project" />
+				<p class="project-title">
+					Online Canvas
+				</p>
+			</a>
+
+			<a href="https://hungry-bardeen-1b3555.netlify.app/" target="_blank" class="project project-tile">
+				<img class="project-image" src="img/DrumKit.png" alt="project" />
+				<p class="project-title">
+					Drum Kit
+				</p>
+			</a>
+
+			<a href="https://festive-bartik-29eb15.netlify.app/" target="_blank" class="project project-tile">
+				<img class="project-image" src="img/StarbucksHomepage.png" alt="project" />
+				<p class="project-title">
+					Starbucks Homepage
+				</p>
+			</a>
+
+			<a href="https://trusting-knuth-bf82dc.netlify.app/" target="_blank" class="project project-tile">
+				<img class="project-image" src="img/WebstackPage.png" alt="project" />
+				<p class="project-title">
+					Webstack Page
+				</p>
+			</a>
+		</div>
+
+	</section>
+
+</body>
+<script>
+	const hero = document.querySelector('.hero');
+	const text = hero.querySelector('h1');
+	const walk = 500; // 500px
+
+	function shadow(e) {
+		const { offsetWidth: width, offsetHeight: height } = hero;
+		let { offsetX: x, offsetY: y } = e;
+
+		if (this !== e.target) {
+			x = x + e.target.offsetLeft;
+			y = y + e.target.offsetTop;
+		}
+		console.log(e.target);
+
+		const xWalk = Math.round((x / width * walk) - (walk / 2));
+		const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+		text.style.textShadow = `
+	  ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.3),
+	  ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.3),
+	  ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.3),
+	  ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.3)
+	`;
+
+	}
+
+	hero.addEventListener('mousemove', shadow);
+</script>
+
+</html>

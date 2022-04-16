@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.VSCodeCounter/
+
+# Python
+env/
+__pycache__/
+
+# Sass
+*.css.map
+
+# Coverage
+coverage_html_report/
+.coverage
+
+# node
+node_modules/
+
+# Django
+/Morningstar/settings/test.py
+/database/
+/static/
+/whoosh_index/
+.qiniu*
+*.log
+
+# secret
+.env
+secret.sh
+gcloud_instances.txt
+
+# others
+TEMP/

@@ -1,0 +1,51 @@
+{
+	"appname": "book",
+	"categories": [
+		{
+			"name": "科技",
+			"books": [
+				{
+					"name": "现代JavaScript教程",
+					"author": "LeviDing",
+					"url": "https://henry529.lanzouw.com/ihRULzny4gh",
+					"url_backup": "https://zh.javascript.info/download/1p4wct1/tutorial.zip"
+				}
+			]
+		},
+		{
+			"name": "传记",
+			"books": [
+				{
+					"name": "生命不息，折腾不止",
+					"author": "罗永浩",
+					"url": "https://henry529.lanzouw.com/i3Qdpznyd9e"
+				}
+			]
+		},
+		{
+			"name": "政治",
+			"books": [
+				{
+					"name": "君主论.epub",
+					"author": "马基雅维利",
+					"url": "https://henry529.lanzouw.com/iuufOznyene"
+				}
+			]
+		},
+		{
+			"name": "财经",
+			"books": [
+				{
+					"name": "小狗钱钱.epub",
+					"author": "博多·舍费尔",
+					"url": "https://henry529.lanzouw.com/ik3Q4znyajg"
+				},
+				{
+					"name": "怪诞行为学(1-5).epub",
+					"author": "丹·艾瑞里",
+					"url": "https://henry529.lanzouw.com/idDZGznyg2f"
+				}
+			]
+		}
+	]
+}

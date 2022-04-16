@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+登录/注册
+{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'base/css/login_register.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="logo">
+        <img src="{% static 'base/img/logo.png' %}" alt="logo">
+    </div>
+    {% include 'base/login_form.html' %}
+    {% include 'base/register_form.html' %}
+
+</div>
+{% endblock %}
+
+
+{% block custom_js %}
+<script>
+    register_form = document.querySelector("#register_form")
+    login_form = document.querySelector("#login_form")
+    register_button = document.querySelector("#register_button")
+    login_button = document.querySelector("#login_button")
+</script>
+
+<script>
+    let action = sessionStorage.getItem('action') || 'login';
+    if (action === 'login') {
+        sessionStorage.setItem('action', 'login')
+        login_form.classList.remove("d-none")
+        register_form.classList.add("d-none")
+    } else {
+        sessionStorage.setItem('action', 'register')
+        login_form.classList.add("d-none")
+        register_form.classList.remove("d-none")
+    }
+    register_button.addEventListener("click", () => {
+        sessionStorage.setItem('action', 'register')
+        login_form.classList.add("d-none")
+        register_form.classList.remove("d-none")
+    })
+    login_button.addEventListener("click", () => {
+        sessionStorage.setItem('action', 'login')
+        login_form.classList.remove("d-none")
+        register_form.classList.add("d-none")
+    })
+</script>
+{% endblock %}

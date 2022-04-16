@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+晨星小站
+{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'base/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="title">
+  本站服务
+</div>
+<nav>
+  {% if request.user.is_superuser %}
+  <a class="item" href="https://jupyter.morningstar529.com/lab" target="_blank">科学计算</a>
+  {% endif %}
+  <a class="item" href="{% url 'album:home' %}" target="_blank">神兔相册</a>
+  <a class="item" href="{% url 'blog:index' %}" target="_blank">晨星博客</a>
+  <a class="item" href="{% url 'book:index' %}" target="_blank">我的书单</a>
+  <a class="item" href="{% url 'forum:home' %}" target="_blank">在线学伴</a>
+  <a class="item" href="{% url 'nav:index' %}" target="_blank">晨星导航</a>
+  <a class="item" href="{% url 'poll:index' %}" target="_blank">在线投票</a>
+  <a class="item" href="{% url 'v2ray:index' %}" target="_blank">科学上网</a>
+  <a class="item" href="{% url 'registry' %}" target="_blank">容器仓库</a>
+  <a class="item" href="https://docs.morningstar529.com" target="_blank">官方文档</a>
+  <a class="item" href="https://ghost.morningstar529.com" target="_blank">开发笔记</a>
+  <a class="item" href="https://gitea.morningstar529.com" target="_blank">代码仓库</a>
+  <a class="item" href="https://jellyfin.morningstar529.com" target="_blank">媒体中心</a>
+  <a class="item" href="https://nextcloud.morningstar529.com" target="_blank">云端存储</a>
+  <a class="item" href="https://send.morningstar529.com" target="_blank">文件传输</a>
+  <a class="item" href="https://ssh.morningstar529.com" target="_blank">远程连接</a>
+  <a class="item" href="https://rsshub.morningstar529.com" target="_blank">聚合阅读</a>
+</nav>
+{% endblock %}
